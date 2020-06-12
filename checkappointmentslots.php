@@ -83,6 +83,18 @@
 </head>
 
 <body>
+    <div id="modal-wrapper" class="modal">
+        <form class="modal-content animate" action="/action_page.php">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close Popup">&times;</span>
+                <h1 class="modal-wrapper-text" style="text-align: center">  Appointment Confirmation Form </h1>
+            </div>
+            <div class="container">
+                <button type="submit"> Confirm </button>
+                <button type="reset"> Cancel </button>
+            </div>
+        </form>
+    </div>
     <div class="available_appointment_div">
         <section class="show_available_appointment_section">
             <div class="show_header">
@@ -124,8 +136,8 @@
                     echo("<br>");
                 }
                 echo("<br>");echo("<br>");
-                echo("<button type='submit' class='appointment_button'>Book Appointment</button>");
             ?>
+            <button class='appointment_button' type="submit" onclick="document.getElementById('modal-wrapper').style.display='block'" style="background-color: rgb(47, 187, 93); width: 210px; height: 50px; border-radius: 10px; border: 25px; color: red; font-size: 20px;">Book Appointment</button>
         </div>
         <section class="show_booked_appointment_section">
             <div class="show_header">
