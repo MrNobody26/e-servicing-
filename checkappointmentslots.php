@@ -84,7 +84,7 @@
 
 <body>
     <div id="modal-wrapper" class="modal">
-        <form class="modal-content animate" action="">
+        <form class="modal-content animate" action="updateappointments.php">
             <div class="imgcontainer">
                 <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close Popup">&times;</span>
                 <h1 class="modal-wrapper-text" style="text-align: center">  Appointment Confirmation Form </h1>
