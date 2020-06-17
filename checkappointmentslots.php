@@ -121,7 +121,6 @@
                         if ($_POST != NULL){
                             try{
                                 update_appointments($_POST['book_now']);
-                                // header("Location: index.html");
                             }catch(Exception $e){echo 'Message: '.$e->getMessage();}
                         }
                     ?>

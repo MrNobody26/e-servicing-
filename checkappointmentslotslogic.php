@@ -1,5 +1,4 @@
-<?php require "config.php";
-$available=array();$free=array();
+<?php $available=array();$free=array();
 function fetchdata() {
     require "config.php";
     global $available; global $free;
@@ -17,7 +16,6 @@ function update_appointments($book_now){require "config.php";
             $stmt = $pdo->prepare($sql);$stmt->execute();
         }catch(Exception $e){echo 'Exception Message: '.$e->getMessage();}
         echo("<script>window.location.href = 'checkappointmentslots.php';</script>");
-    }
-    fetchdata();
+    }fetchdata();
 }
 ?>
