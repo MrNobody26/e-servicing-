@@ -84,7 +84,7 @@
 
 <body>
     <div id="modal-wrapper" class="modal">
-        <form class="modal-content animate" action="/action_page.php">
+        <form class="modal-content animate" action="">
             <div class="imgcontainer">
                 <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close Popup">&times;</span>
                 <h1 class="modal-wrapper-text" style="text-align: center">  Appointment Confirmation Form </h1>
@@ -101,71 +101,39 @@
                 <b><p class="section_header" align="center">Available Slots for Appointment</p></b>
             </div>
             <br>
-            <?php
-                $available = array(
-                    array(
-                        "date" => "08/06/2020",
-                        "time" => "02:00PM"
-                    ),
-                    array(
-                        "date" => "08/06/2020",
-                        "time" => "03:00PM"
-                    ),
-                    array(
-                        "date" => "08/06/2020",
-                        "time" => "04:00PM"
-                    ),
-                    array(
-                        "date" => "08/06/2020",
-                        "time" => "05:00PM"
-                    ),
-                    array(
-                        "date" => "08/06/2020",
-                        "time" => "06:00PM"
-                    )
-                );
-                foreach($available as $a)
-                {
-                    echo("<center><article class='show_details'>");
-                        echo("<center><b>Date</b>&nbsp<i>" . $a["date"] . "</i></center>");
-                        // echo("&nbsp&nbsp&nbsp&nbsp");
-                        echo("<center><b>Time</b>&nbsp<i>" . $a["time"] . "</i></center>");
-                        echo("<input type='checkbox' name='book_now[]'>");
+            <form action="checkappointmentslots.php" method="get">
+                <?php
+                    require_once "checkappointmentslotslogic.php";
+                    foreach($available as $a)
+                    {
+                        echo("<center><article class='show_details'>");
+                            echo("<center><b>Date</b>&nbsp<i>" . $a["date"] . "</i></center>");
+                            // echo("&nbsp&nbsp&nbsp&nbsp");
+                            echo("<center><b>Time</b>&nbsp<i>" . $a["time"] . "</i></center>");
+                            echo("<input type='checkbox' name='book_now[]' value='". $a['id'] ."'>");
+                            echo("<br>");
+                        echo("</article</center>");
                         echo("<br>");
-                    echo("</article</center>");
-                    echo("<br>");
-                }
-                echo("<br>");echo("<br>");
-            ?>
-            <button class='appointment_button' type="submit" onclick="document.getElementById('modal-wrapper').style.display='block'" style="background-color: rgb(47, 187, 93); width: 210px; height: 50px; border-radius: 10px; border: 25px; color: red; font-size: 20px;">Book Appointment</button>
+                    }
+                    echo("<br>");echo("<br>");
+                    if ($_GET != NULL){
+                        try{
+                            // foreach($_GET['book_now'] as $v){update_appointment($v);}
+                            update_appointments($_GET['book_now']);
+                            // header("Location: index.html");
+                        }catch(Exception $e){echo 'Message: '.$e->getMessage();}
+                    }
+                ?>
+            </form>
+            <!-- <button class='appointment_button' type="submit" onclick="document.getElementById('modal-wrapper').style.display='block'" style="background-color: rgb(47, 187, 93); width: 210px; height: 50px; border-radius: 10px; border: 25px; color: red; font-size: 20px;">Book Appointment</button> -->
+            <button type="submit" name="submit"></button>
         </div>
         <section class="show_booked_appointment_section">
             <div class="show_header">
                 <b><p class="section_header" align="center">Booked Slots for Appointment</p></b>
             </div>
+            <br>
             <?php
-                $free = array(
-                    array(
-                        "date" => "08/06/2020",
-                        "time" => "07:00PM"
-                    ),
-                    array(
-                        "date" => "08/06/2020",
-                        "time" => "08:00PM"
-                    ),
-                    array(
-                        "date" => "08/06/2020",
-                        "time" => "09:00PM"
-                    ),
-                    array(
-                        "date" => "08/06/2020",
-                        "time" => "10:00PM"
-                    ),
-                    array(
-                        "date" => "08/06/2020",
-                        "time" => "11:00PM"
-                    )
-                );
                 foreach($free as $f)
                 {
                     echo("<article>");

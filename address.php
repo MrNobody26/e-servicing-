@@ -1,16 +1,14 @@
 
 <?php
 
+require_once "config.php";
+
 $fname=$_POST["fname"];
 $lname=$_POST["lname"];
 $phone=$_POST["phone"];
 $address=$_POST["address"];
 $email=$_POST["email"];
 $pws=$_POST["pass"];
-$server="localhost";
-$user="root";
-$pass="";
-$database="database";
 
 $connection=mysql_connect($server,$user,$pass) or die("could not connect:".mysql_error());
 mysql_select_db($database,$connection);
