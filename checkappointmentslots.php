@@ -101,32 +101,35 @@
                 <b><p class="section_header" align="center">Available Slots for Appointment</p></b>
             </div>
             <br>
-            <form action="checkappointmentslots.php" method="get">
-                <?php
-                    require_once "checkappointmentslotslogic.php";
-                    foreach($available as $a)
-                    {
-                        echo("<center><article class='show_details'>");
-                            echo("<center><b>Date</b>&nbsp<i>" . $a["date"] . "</i></center>");
-                            // echo("&nbsp&nbsp&nbsp&nbsp");
-                            echo("<center><b>Time</b>&nbsp<i>" . $a["time"] . "</i></center>");
-                            echo("<input type='checkbox' name='book_now[]' value='". $a['id'] ."'>");
+            <form action="checkappointmentslots.php" method="post">
+                <center>
+                    <?php
+                        require_once "checkappointmentslotslogic.php";
+                        fetchdata();
+                        foreach($available as $a)
+                        {
+                            echo("<center><article class='show_details'>");
+                                echo("<center><b>Date</b>&nbsp<i>".$a["date"]."</i></center>");
+                                // echo("&nbsp&nbsp&nbsp&nbsp");
+                                echo("<center><b>Time</b>&nbsp<i>".$a["time"]."</i></center>");
+                                echo("<input type='checkbox' name='book_now[]' value='". $a['id']."'>");
+                                echo("<br>");
+                            echo("</article</center>");
                             echo("<br>");
-                        echo("</article</center>");
-                        echo("<br>");
-                    }
-                    echo("<br>");echo("<br>");
-                    if ($_GET != NULL){
-                        try{
-                            // foreach($_GET['book_now'] as $v){update_appointment($v);}
-                            update_appointments($_GET['book_now']);
-                            // header("Location: index.html");
-                        }catch(Exception $e){echo 'Message: '.$e->getMessage();}
-                    }
-                ?>
+                        }
+                        echo("<br>");echo("<br>");
+                        if ($_POST != NULL){
+                            try{
+                                update_appointments($_POST['book_now']);
+                                // header("Location: index.html");
+                            }catch(Exception $e){echo 'Message: '.$e->getMessage();}
+                        }
+                    ?>
+                    
+                </center>
             </form>
             <!-- <button class='appointment_button' type="submit" onclick="document.getElementById('modal-wrapper').style.display='block'" style="background-color: rgb(47, 187, 93); width: 210px; height: 50px; border-radius: 10px; border: 25px; color: red; font-size: 20px;">Book Appointment</button> -->
-            <button type="submit" name="submit"></button>
+            <button type="submit" name="submit" class='appointment_button' style='background-color: rgb(47, 187, 93); width: 210px; height: 50px; border-radius: 10px; border: 25px; color: red; font-size: 20px;'>Book Appointment</button>
         </div>
         <section class="show_booked_appointment_section">
             <div class="show_header">
