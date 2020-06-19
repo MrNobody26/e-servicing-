@@ -2,20 +2,19 @@ body
 {
     font-family: Tahoma, Geneva, sans-serif;
     color: #fff;
-    background: url(css/image.jpg);
+    background: url(image.jpg);
     background-size: cover;
 }
-.signup
+.signin
 {
-    background:rgba(44, 62, 80, 0.7);
-	padding:40px;
-	width:250px;
-	margin:auto;
-	margin-top:80px;
-	height:500px;
-	margin-left:180px;
-	margin:60 auto;
-	margin-top:90px;
+    background: rgba(44,62,80,0.7);
+    padding: 40px;
+    width: 250px;
+    margin: auto;
+    margin-top: 90px;
+    height: 400px;
+    margin-left: 180x;
+    
 }
 form
 {
@@ -24,7 +23,6 @@ form
 }
 input
 {
-    
     width: 240px;
     text-align: center;
     background: transparent;
@@ -57,8 +55,23 @@ input[type=button]:hover
 }
 h2
 {
-    color: #000;
+    color: white;
     
+}
+a
+{
+    color: yellow;
+    text-decoration: blink;
+}
+a:hover
+{
+    color: skyblue;
+}
+.container
+{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
 ::placeholder {
     color:aliceblue;
