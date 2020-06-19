@@ -14,13 +14,11 @@
             $con=mysqli_connect('localhost','root','','database') or die(mysqli_error());  
             $query=mysqli_query($con,$sql);
             // $numrows=mysql_num_rows($query);
-            if(mysqli_num_rows($query) > 0)  
-            {
+            if(mysqli_num_rows($query) > 0){
                 while($row = mysqli_fetch_assoc($query)){
                     $dbusername=$row['First_name'];
                     $dbpassword=$row['c_password'];
-                    if($user == $dbusername && $pass == $dbpassword)  
-                    {  
+                    if($user == $dbusername && $pass == $dbpassword){
                         session_start();
                         $_SESSION['sess_user']=$user;
                     
@@ -28,16 +26,9 @@
                         header("Location: 1HOME.html");  
                     }
                 }
-            }
-            else
-            {  
-                echo "Invalid username or password! please try again";  
-            }
+            }else{echo "Invalid username or password! please try again";}
         }
-        else
-        {  
-            echo "All fields are required!";  
-        }
+        else{echo "All fields are required!";}
     } 
     mysqli_close($con);
 ?>
