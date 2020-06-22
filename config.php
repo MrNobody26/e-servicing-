@@ -7,6 +7,4 @@
     $password=$pass;
     $database="database";
     $dbname=$database;
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $conn = $pdo;
 ?>
